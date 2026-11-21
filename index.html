@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Zeitreise" />
+    <meta name="theme-color" content="#1d1630" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="./bilder/symbol-180.png" />
+    <link rel="icon" href="./bilder/symbol-192.png" />
+    <title>Zeitreise durch die Geschichte</title>
+    <script type="module" crossorigin src="./assets/spiel-B60qrgVE.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/math.scalar.functions-D-i-XBaP.js">
+    <link rel="modulepreload" crossorigin href="./assets/performanceConfigurator-UtxC_Odd.js">
+    <link rel="modulepreload" crossorigin href="./assets/engineStore-Bn2tApal.js">
+    <link rel="modulepreload" crossorigin href="./assets/typeStore-Cu_sj2zM.js">
+    <link rel="modulepreload" crossorigin href="./assets/math.color.pure-DIBOnIKJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/domManagement-BqltO0ki.js">
+    <link rel="modulepreload" crossorigin href="./assets/logger-CuBYPcDK.js">
+    <link rel="modulepreload" crossorigin href="./assets/tools.functions-PPH2Ush9.js">
+    <link rel="modulepreload" crossorigin href="./assets/halfFloat-Ce77JD5z.js">
+    <link rel="modulepreload" crossorigin href="./assets/guid-BXdVC_j_.js">
+    <link rel="modulepreload" crossorigin href="./assets/tools.pure-Iss_0DaR.js">
+    <link rel="modulepreload" crossorigin href="./assets/decorators-C_ra_8EP.js">
+    <link rel="modulepreload" crossorigin href="./assets/smartArray-BRfcgNbX.js">
+    <link rel="modulepreload" crossorigin href="./assets/decorators.serialization-DACxtPyj.js">
+    <link rel="modulepreload" crossorigin href="./assets/lightConstants-Cl_JkvDR.js">
+    <link rel="modulepreload" crossorigin href="./assets/shaderStore-D-XQlhUT.js">
+    <link rel="modulepreload" crossorigin href="./assets/internalTexture-B3djGrls.js">
+    <link rel="modulepreload" crossorigin href="./assets/abstractEngine.pure-CzcwHVrU.js">
+    <link rel="modulepreload" crossorigin href="./assets/thinEngine.pure-CflXBp96.js">
+    <link rel="modulepreload" crossorigin href="./assets/buffer.pure-CQggqgBe.js">
+    <link rel="modulepreload" crossorigin href="./assets/sceneComponent-BqsGOTk9.js">
+    <link rel="modulepreload" crossorigin href="./assets/math.plane-DNfzQ8TP.js">
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-Dff9-bt2.js">
+    <link rel="modulepreload" crossorigin href="./assets/math.size-BHZaDYSv.js">
+    <link rel="modulepreload" crossorigin href="./assets/baseTexture.pure-BJ89EpCA.js">
+    <link rel="modulepreload" crossorigin href="./assets/texture.pure-xqDgEaaE.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderTargetTexture.pure-BbRi9uoH.js">
+    <link rel="modulepreload" crossorigin href="./assets/effectRenderer.pure-CCsreHhy.js">
+    <link rel="modulepreload" crossorigin href="./assets/flowGraphInteger.pure-CZmJgkLp.js">
+    <link rel="modulepreload" crossorigin href="./assets/postProcess.pure-Ymx7-am1.js">
+    <link rel="modulepreload" crossorigin href="./assets/flowGraphBlock-Bk62x1N7.js">
+    <link rel="modulepreload" crossorigin href="./assets/flowGraphExecutionBlock-DXvOsle-.js">
+    <link rel="modulepreload" crossorigin href="./assets/flowGraphExecutionBlockWithOutSignal-7sj2AQLB.js">
+    <link rel="stylesheet" crossorigin href="./assets/spiel-BL2aMkvn.css">
+  </head>
+  <body>
+    <canvas id="szene"></canvas>
+
+    <!-- Startbildschirm -->
+    <div id="start" class="overlay">
+      <div class="karte startkarte">
+        <h1 id="start-titel">Zeitreise durch die Geschichte</h1>
+        <p id="start-unter" class="unter">Tag der offenen Tür</p>
+        <ul id="start-steuerung" class="steuerliste"></ul>
+        <button id="startknopf" class="hauptknopf" disabled>Lade …</button>
+        <p id="speicherstand" class="speicherstand"></p>
+      </div>
+    </div>
+
+    <!-- Spieloberflaeche -->
+    <div id="hud" hidden>
+      <div class="hud-titel" id="hud-titel">Passwörter</div>
+      <div class="hud-felder" id="hud-felder"></div>
+    </div>
+
+    <button id="reset" class="reset" hidden aria-label="Zurücksetzen (2 Sekunden halten)">
+      <svg viewBox="0 0 36 36" class="reset-ring"><circle cx="18" cy="18" r="15" /></svg>
+      <svg viewBox="0 0 24 24" class="reset-symbol"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z" /></svg>
+    </button>
+
+    <div id="tippziel" class="tippziel" hidden></div>
+    <div id="drohne-text" class="drohne-text" hidden></div>
+    <div id="pc-hinweis" class="pc-hinweis" hidden></div>
+
+    <div id="untertitel" class="untertitel" hidden>
+      <div class="untertitel-kopf"><span id="untertitel-name"></span></div>
+      <p id="untertitel-text"></p>
+      <div class="untertitel-knoepfe">
+        <button id="untertitel-weiter" class="knopf">Weiter</button>
+      </div>
+    </div>
+
+    <div id="fund" class="overlay fund" hidden>
+      <div class="karte fundkarte">
+        <p id="fund-titel" class="fund-titel"></p>
+        <p id="fund-wort" class="fund-wort"></p>
+        <p id="fund-text" class="fund-text"></p>
+        <button id="fund-ok" class="hauptknopf">Weiter</button>
+      </div>
+    </div>
+
+    <div id="truhe" class="overlay" hidden>
+      <div class="karte truhenkarte">
+        <h2 id="truhe-titel">Die Truhe</h2>
+        <p id="truhe-text"></p>
+        <div class="truhe-felder" id="truhe-felder"></div>
+        <p id="truhe-meldung" class="truhe-meldung"></p>
+        <div class="truhe-knoepfe">
+          <button id="truhe-abbrechen" class="knopf nebenknopf">Schließen</button>
+          <button id="truhe-ok" class="hauptknopf">Öffnen</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="schatz" class="overlay schatz" hidden>
+      <div class="karte schatzkarte">
+        <p id="schatz-titel" class="schatz-titel"></p>
+        <p id="schatz-text"></p>
+        <p id="schatz-wort" class="schatz-wort"></p>
+        <button id="schatz-ok" class="knopf nebenknopf">Schließen</button>
+      </div>
+    </div>
+
+    <div id="steuerhilfe" class="steuerhilfe" hidden>
+      <div class="steuerhilfe-links"><div class="kreis"></div><span>Laufen</span></div>
+      <div class="steuerhilfe-rechts"><div class="wisch"></div><span>Umsehen</span></div>
+    </div>
+
+    <button id="ueberspringen" class="knopf ueberspringen" hidden>Überspringen</button>
+
+    <div id="uebergang" class="uebergang" hidden>
+      <div class="wirbel"></div>
+      <div class="wirbel w2"></div>
+      <p id="uebergang-text" class="uebergang-text"></p>
+    </div>
+
+    <div id="joy-basis"><div id="joy-knopf"></div></div>
+    <div id="messanzeige" class="messanzeige" hidden></div>
+
+    <div id="kontextverlust" class="overlay" hidden>
+      <div class="karte">
+        <p id="kontextverlust-text">Bitte Seite neu laden</p>
+        <button class="hauptknopf" onclick="location.reload()">Neu laden</button>
+      </div>
+    </div>
+
+  </body>
+</html>

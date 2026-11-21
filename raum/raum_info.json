@@ -1,0 +1,19 @@
+{
+ "lauf": "F",
+ "quelle": [
+  "Unbenannter Scan.spz",
+  "Unbenannter Scan2.spz"
+ ],
+ "raum_hoch": {
+  "splats": 250000,
+  "bytes": 3335534,
+  "boden_raster": 60678,
+  "decke_raster": 20592
+ },
+ "raum_niedrig": {
+  "splats": 120000,
+  "bytes": 1662508,
+  "boden_raster": 24447,
+  "decke_raster": 9207
+ }
+}

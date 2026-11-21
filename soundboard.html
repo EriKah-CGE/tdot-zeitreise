@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#1d1630" />
+    <link rel="icon" href="./bilder/symbol-192.png" />
+    <title>Zeitreise – Sprachausgaben</title>
+    <!-- Soundboard: jede Sprachausgabe des Spiels einzeln abspielen (Texte aus texte.json, Ton aus audio/<id>.mp3).
+         Fehlt eine Tondatei, spricht die eingebaute Stimme des Geraets (wie im Spiel mit "ersatzStimme"). -->
+    <style>:root{--nacht:#1d1630;--gold:#f2c35b;--papier:#fcf6e8;--tinte:#2a2016}*{box-sizing:border-box}body{background:var(--nacht);color:var(--tinte);margin:0;font-family:Trebuchet MS,Segoe UI,system-ui,sans-serif}header{z-index:2;background:var(--nacht);color:#fff;padding:14px 16px 10px;position:sticky;top:0}h1{margin:0;font-size:28px}header p{opacity:.85;margin:4px 0 10px;font-size:18px}.knoepfe{flex-wrap:wrap;gap:10px;display:flex}button{font:inherit;cursor:pointer;color:#fff;touch-action:manipulation;background:linear-gradient(#e0a53a,#b7741c);border:none;border-radius:999px;padding:10px 20px;font-size:19px;font-weight:700}button.neben{background:linear-gradient(#8b8f99,#626772)}main{max-width:980px;margin:0 auto;padding:6px 16px 40px}h2{color:var(--gold);margin:28px 0 4px;font-size:26px}h2.figur{border-bottom:2px solid var(--gold);padding-bottom:4px}h3{color:#e8dcc0;margin:14px 0 6px;font-size:19px;font-weight:400}.zeile{background:var(--papier);cursor:pointer;border:3px solid #0000;border-radius:14px;align-items:flex-start;gap:14px;margin:8px 0;padding:12px 14px;display:flex}.zeile.laeuft{border-color:var(--gold)}.zeile .spiel{border-radius:50%;flex:0 0 52px;height:52px;padding:0;font-size:22px}.zeile .text{font-size:20px;line-height:1.4}.zeile .id{color:#7a6a52;margin-top:4px;font-size:14px;display:block}.marke{background:#e3d6b8;border-radius:8px;margin-left:6px;padding:2px 8px;font-size:13px;display:inline-block}.marke.mp3{color:#fff;background:#2e8b57}</style>
+  </head>
+  <body>
+    <header>
+      <h1 id="titel">Alle Sprachausgaben</h1>
+      <p id="hinweis"></p>
+      <div class="knoepfe">
+        <button id="alle">Alle nacheinander</button>
+        <button id="stopp" class="neben">Stopp</button>
+        <button id="spiel" class="neben" onclick="location.href='./'">Zum Spiel</button>
+      </div>
+    </header>
+    <main id="liste"></main>
+    <script>
+      // Nach Figur gruppiert (Lauf A): Sprecher -> Abschnitte. Lauf B: Marktfrau Grete und Wachsoldat Marcus,
+      // alle Stimmen deutsch (ElevenLabs-Bibliothek), Geraeusche der Szenen am Ende.
+      const FIGUREN = [
+        ["Comenius (Klassenraum)", [
+          ["Begrüßung", (t) => t.comenius.begruessung],
+          ["Hinweise je nach Fortschritt", (t) => Object.values(t.comenius.hinweise).flat()],
+          ["Tipps zu den Epochen", (t) => Object.values(t.comenius.tipps)],
+        ]],
+        ["Baumeister Hemiunu (Ägypten)", [
+          ["Erzählt vom Pyramidenbau", (t) => t.baumeister?.erzaehlen ?? []],
+          ["Hinweis zum Passwort", (t) => (t.baumeister ? [t.baumeister.hinweis] : [])],
+        ]],
+        ["Marktfrau Grete (Mittelalter)", [
+          ["Erzählt vom Leben in der Stadt", (t) => t.marktfrau?.erzaehlen ?? []],
+          ["Hinweis zum Passwort", (t) => (t.marktfrau ? [t.marktfrau.hinweis] : [])],
+        ]],
+        ["Wachsoldat Marcus (Rom)", [
+          ["Erzählt vom Kolosseum und vom Kaiser", (t) => t.wachsoldat?.erzaehlen ?? []],
+          ["Hinweis zum Passwort", (t) => (t.wachsoldat ? [t.wachsoldat.hinweis] : [])],
+        ]],
+        ["Hilfsdrohne", [
+          ["Tipps beim Antippen", (t) => (t.drohne ? Object.values(t.drohne.tipps) : [])],
+          ["Nach dem Fund", (t) => (t.drohne ? [t.drohne.gefunden] : [])],
+        ]],
+        ["Erzählerin", [
+          ["Ankunft in den Epochen", (t) => Object.values(t.ankunft)],
+          ["Info-Punkte", (t) => Object.values(t.infopunkte).flatMap((i) => i.zeilen)],
+          ["Passwort gefunden", (t) => Object.values(t.passwortfunde)],
+        ]],
+        ["Geräusche der Szenen", [
+          ["Ägypten", () => GERAEUSCHE.aegypten],
+          ["Mittelalter", () => GERAEUSCHE.mittelalter],
+          ["Rom", () => GERAEUSCHE.rom],
+        ]],
+      ];
+      // Geraeusche (ElevenLabs Sound Effects); Amboss, Schwerter und Wind entstehen im Spiel selbst (Menge seit Lauf J echt)
+      const g = (id, text) => ({ id: "geraeusche/" + id, text });
+      const GERAEUSCHE = {
+        aegypten: [g("rufe", "Rufe des Zugtrupps"), g("schlitten", "Knarrende Seile, schleifender Schlitten"), g("meissel", "Meißelschläge")],
+        mittelalter: [g("markt_stimmen", "Marktstimmen"), g("markt_rufe", "Rufe der Händler"), g("huehner", "Hühner"),
+          g("brunnen", "Brunnen"), g("glocke", "Kirchenglocke (ab und zu)")],
+        rom: [g("fanfare", "Fanfare beim Betreten"), g("segel", "Wind in den Sonnensegeln"),
+          g("menge_raunen", "Raunen der Zuschauermenge (Schleife)"), g("jubel_welle", "Jubelwelle der Zuschauer"),
+          g("jubel_kurz", "Kurzer Jubel (Stoß trifft den Schild)")],
+      };
+      let audio = null;
+      let ctx = null;
+      let lauf = 0;
+      let vorhanden = new Set();
+      let config = {};
+
+      function stopp() {
+        lauf++;
+        if (audio) { audio.pause(); audio = null; }
+        if ("speechSynthesis" in window) speechSynthesis.cancel();
+        document.querySelectorAll(".zeile.laeuft").forEach((e) => e.classList.remove("laeuft"));
+      }
+
+      function sprechtext(z) {
+        const m = /^p_(\w+)$/.exec(z.id);
+        if (!m || !config.passwoerter?.[m[1]]) return z.text;
+        const w = String(config.passwoerter[m[1]]);
+        return z.text.split("{passwort}").join(w.charAt(0) + w.slice(1).toLowerCase());
+      }
+
+      function spiele(z, el) {
+        stopp();
+        const nr = lauf;
+        el.classList.add("laeuft");
+        return new Promise((ok) => {
+          const ende = () => { if (nr === lauf) el.classList.remove("laeuft"); ok(nr === lauf); };
+          if (vorhanden.has(z.id)) {
+            // Web Audio statt <audio>: funktioniert auf dem iPad auch aus dem Offline-Speicher (keine Bereichsanfragen)
+            ctx = ctx ?? new (window.AudioContext ?? window.webkitAudioContext)();
+            ctx.resume();
+            fetch(`audio/${z.id}.mp3`).then((r) => r.arrayBuffer()).then((d) => ctx.decodeAudioData(d)).then((buf) => {
+              if (nr !== lauf) return ende();
+              const q = ctx.createBufferSource();
+              q.buffer = buf;
+              q.connect(ctx.destination);
+              q.onended = ende;
+              audio = { pause: () => { q.onended = null; try { q.stop(); } catch {} } };
+              q.start(0);
+            }).catch(ende);
+          } else if ("speechSynthesis" in window) {
+            const u = new SpeechSynthesisUtterance(sprechtext(z));
+            u.lang = "de-DE";
+            const de = speechSynthesis.getVoices().filter((v) => v.lang.toLowerCase().startsWith("de"));
+            const v = de.find((v) => /Anna|Petra|Markus|Helena|Google Deutsch/.test(v.name)) ?? de[0];
+            if (v) u.voice = v;
+            u.rate = 0.95;
+            u.onend = ende;
+            u.onerror = ende;
+            speechSynthesis.speak(u);
+          } else ende();
+        });
+      }
+
+      async function start() {
+        const [texte, cfg, liste] = await Promise.all([
+          fetch("texte.json", { cache: "no-cache" }).then((r) => r.json()),
+          fetch("config.json", { cache: "no-cache" }).then((r) => r.json()),
+          fetch("audio/liste.json").then((r) => (r.ok ? r.json() : [])).catch(() => []),
+        ]);
+        config = cfg;
+        vorhanden = new Set([...liste, ...Object.values(GERAEUSCHE).flat().map((z) => z.id)]);
+        document.getElementById("titel").textContent = texte.oberflaeche.soundboardTitel ?? "Alle Sprachausgaben";
+        document.getElementById("hinweis").textContent = texte.oberflaeche.soundboardHinweis ?? "";
+        const main = document.getElementById("liste");
+        const alle = [];
+        for (const [figur, abschnitte] of FIGUREN) {
+         const zeilenFigur = abschnitte.flatMap(([, f]) => f(texte));
+         if (!zeilenFigur.length) continue;
+         const h1 = document.createElement("h2");
+         h1.className = "figur";
+         h1.textContent = figur;
+         main.appendChild(h1);
+         for (const [titel, f] of abschnitte) {
+          const zeilen = f(texte);
+          if (!zeilen.length) continue;
+          const h = document.createElement("h3");
+          h.textContent = titel;
+          main.appendChild(h);
+          for (const z of zeilen) {
+            const el = document.createElement("div");
+            el.className = "zeile";
+            el.innerHTML = `<button class="spiel" aria-label="Abspielen">&#9654;</button><div class="text"></div>`;
+            el.querySelector(".text").textContent = z.text.replace("{passwort}", "…");
+            const id = document.createElement("span");
+            id.className = "id";
+            id.textContent = z.id;
+            const m = document.createElement("span");
+            m.className = "marke" + (vorhanden.has(z.id) ? " mp3" : "");
+            m.textContent = vorhanden.has(z.id) ? "MP3" : "Gerätestimme";
+            id.appendChild(m);
+            el.querySelector(".text").appendChild(id);
+            el.addEventListener("click", () => spiele(z, el));
+            main.appendChild(el);
+            alle.push([z, el]);
+          }
+         }
+        }
+        document.getElementById("stopp").addEventListener("click", stopp);
+        document.getElementById("alle").addEventListener("click", async () => {
+          for (const [z, el] of alle) {
+            el.scrollIntoView({ block: "center", behavior: "smooth" });
+            if (!(await spiele(z, el))) break;
+            await new Promise((r) => setTimeout(r, 500));
+          }
+        });
+      }
+      start().catch((e) => (document.getElementById("hinweis").textContent = "Fehler: " + e.message));
+    </script>
+  </body>
+</html>

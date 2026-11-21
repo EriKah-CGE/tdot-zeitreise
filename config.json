@@ -1,0 +1,501 @@
+{
+  "_hinweis": "Einstellungen fuer den Tag der offenen Tuer. Koordinaten in Metern: x nach rechts, y nach oben, z nach hinten (Blick beim Start geht nach -z). Drehung in Grad: Blickrichtung bzw. Vorderseite; 0 = nach -z (zur Tafel), 90 = nach +x (zu den Fenstern), 180 = nach +z, -90 = nach -x.",
+  "passwoerter": {
+    "aegypten": "PHARAO",
+    "mittelalter": "MARKT",
+    "rom": "KAISER"
+  },
+  "schnitzeljagdWort": "ZEITREISE",
+  "raum": {
+    "_hinweis": "Lauf H: Standard ist wieder der gebaute Platzhalter-Raum; der Wert modus wird im Spiel nicht ausgewertet. Den Scan (raum_hoch.spz, bei zu niedriger Bildrate raum_niedrig.spz) laedt nur der Adresszusatz ?raum=splat (zum Testen, nicht im Offline-Speicher). Laedt er nicht, nimmt das Spiel von selbst den Platzhalter (fuer die Sitzung gemerkt).",
+    "modus": "platzhalter",
+    "splat": "raum/raum_hoch.spz",
+    "splatReduziert": "raum/raum_niedrig.spz",
+    "splatPosition": [
+      -0.74,
+      0.639,
+      -0.09
+    ],
+    "splatDrehung": [
+      -0.32,
+      38.4,
+      -0.36
+    ],
+    "splatSkalierung": 1,
+    "fpsGrenze": 30,
+    "_hinweisLaufC": "Lauf C (echter Scan 'Unbenannter Scan.spz'): splatKlassenraum = Plaetze und Kollision im gescannten Raum (gelten nur, solange der Scan geladen ist; der Platzhalter nutzt weiter 'klassenraum'). splatLicht = Helligkeit/Farbton von Truhe und Portalrahmen, Licht fuer Comenius, Staerke der Kontaktschatten. splatHuelle = einfarbige Waende hinter dem Scan, damit Loecher nicht dunkel erscheinen (an: false schaltet sie ab). Koordinaten wie bei 'klassenraum'.",
+    "splatKlassenraum": {
+      "start": {
+        "x": -0.6,
+        "z": 2.55,
+        "drehung": 4
+      },
+      "comenius": {
+        "x": 0.95,
+        "z": -3.25,
+        "drehung": 195
+      },
+      "truhe": {
+        "x": -0.25,
+        "z": -3.55,
+        "drehung": 180
+      },
+      "portale": {
+        "aegypten": {
+          "x": 2.75,
+          "z": -4.05,
+          "drehung": 180
+        },
+        "mittelalter": {
+          "x": 1.75,
+          "z": 3.9,
+          "drehung": 0
+        },
+        "rom": {
+          "x": -3.15,
+          "z": 3.25,
+          "drehung": 90
+        }
+      },
+      "kollision": {
+        "boden": [
+          {
+            "x0": -3.3,
+            "x1": 3.45,
+            "z0": -4.25,
+            "z1": 4.05,
+            "h": 0
+          }
+        ],
+        "hindernisse": [
+          {
+            "name": "Lehrertisch, Lehrerstuhl und Tafelecke",
+            "x": -2.15,
+            "z": -3.64,
+            "b": 2.7,
+            "t": 1.92,
+            "drehung": 0
+          },
+          {
+            "name": "Ecke hinten rechts 1",
+            "x": 3.55,
+            "z": 2.65,
+            "b": 0.5,
+            "t": 0.5,
+            "drehung": 0
+          },
+          {
+            "name": "Ecke hinten rechts 2",
+            "x": 3.375,
+            "z": 3.2,
+            "b": 0.85,
+            "t": 0.6,
+            "drehung": 0
+          },
+          {
+            "name": "Ecke hinten rechts 3",
+            "x": 3.2,
+            "z": 3.85,
+            "b": 1.2,
+            "t": 0.7,
+            "drehung": 0
+          },
+          {
+            "name": "Luftreiniger",
+            "x": -1.3,
+            "z": 4.2,
+            "b": 0.9,
+            "t": 0.5,
+            "drehung": 0
+          }
+        ]
+      }
+    },
+    "splatLicht": {
+      "belichtung": 0.95,
+      "farbe": [
+        0.96,
+        0.98,
+        1.02
+      ],
+      "figur": {
+        "richtung": [
+          -0.75,
+          0.6,
+          0.1
+        ],
+        "farbe": [
+          1.0,
+          1.02,
+          1.05
+        ],
+        "himmel": [
+          0.6,
+          0.62,
+          0.66
+        ],
+        "boden": [
+          0.42,
+          0.36,
+          0.31
+        ],
+        "belichtung": 1.0
+      },
+      "schatten": 0.55
+    },
+    "splatHuelle": {
+      "an": true,
+      "x0": -4.0,
+      "x1": 4.0,
+      "z0": -4.8,
+      "z1": 4.8,
+      "hoehe": 3.02,
+      "wand": [
+        0.6,
+        0.6,
+        0.61
+      ],
+      "boden": [
+        0.74,
+        0.6,
+        0.51
+      ],
+      "decke": [
+        0.67,
+        0.66,
+        0.64
+      ],
+      "vorn": [
+        0.58,
+        0.58,
+        0.59
+      ],
+      "links": [
+        0.82,
+        0.86,
+        0.9
+      ]
+    },
+    "_hinweisLaufF": "Lauf F: raum_hoch/raum_niedrig.spz sind jetzt aus zwei Scans zusammengefuegt und leer (ohne Schuelertische, -stuehle, Taschen; tools/scan_zusammenfuegen.py). Die Datei liegt in den Koordinaten von Scan 1, splatPosition/splatDrehung bleiben daher wie in Lauf C. Kollision ohne Tischreihen; Huellenfarben am neuen Scan gemessen."
+  },
+  "klassenraum": {
+    "start": {
+      "x": 0,
+      "z": 4.4,
+      "drehung": 0
+    },
+    "comenius": {
+      "x": -2.5,
+      "z": -3.0,
+      "drehung": 161
+    },
+    "truhe": {
+      "x": -1.9,
+      "z": -4.05,
+      "drehung": 167
+    },
+    "portale": {
+      "aegypten": {
+        "x": -4.35,
+        "z": -1.6,
+        "drehung": 90
+      },
+      "mittelalter": {
+        "x": 2.75,
+        "z": -4.4,
+        "drehung": 180
+      },
+      "rom": {
+        "x": 4.35,
+        "z": -1.6,
+        "drehung": -90
+      }
+    },
+    "kollision": {
+      "_hinweis": "boden: begehbare Rechtecke (x0..x1, z0..z1, Hoehe h). hindernisse: Kaesten mit Mitte x/z, Breite b (x), Tiefe t (z), Drehung in Grad.",
+      "boden": [
+        {
+          "x0": -4.7,
+          "x1": 4.7,
+          "z0": -4.7,
+          "z1": 4.7,
+          "h": 0
+        }
+      ],
+      "hindernisse": [
+        {
+          "name": "Lehrertisch mit Stuhl",
+          "x": -3.6,
+          "z": -4.15,
+          "b": 1.7,
+          "t": 1.45,
+          "drehung": 0
+        },
+        {
+          "name": "Tische links vorn",
+          "x": -2.45,
+          "z": 1.06,
+          "b": 2.9,
+          "t": 1.16,
+          "drehung": 0
+        },
+        {
+          "name": "Tische links mitte",
+          "x": -2.45,
+          "z": 2.61,
+          "b": 2.9,
+          "t": 1.16,
+          "drehung": 0
+        },
+        {
+          "name": "Tische links hinten",
+          "x": -2.45,
+          "z": 4.16,
+          "b": 2.9,
+          "t": 1.16,
+          "drehung": 0
+        },
+        {
+          "name": "Tische rechts vorn",
+          "x": 2.45,
+          "z": 1.06,
+          "b": 2.9,
+          "t": 1.16,
+          "drehung": 0
+        },
+        {
+          "name": "Tische rechts mitte",
+          "x": 2.45,
+          "z": 2.61,
+          "b": 2.9,
+          "t": 1.16,
+          "drehung": 0
+        },
+        {
+          "name": "Tische rechts hinten",
+          "x": 2.45,
+          "z": 4.16,
+          "b": 2.9,
+          "t": 1.16,
+          "drehung": 0
+        },
+        {
+          "name": "Regal",
+          "x": -4.68,
+          "z": 3.2,
+          "b": 0.62,
+          "t": 1.4,
+          "drehung": 0
+        }
+      ]
+    },
+    "_hinweisLaufH": "Lauf H: Plaetze neu - Tafel mittig (x -1,5..1,5), links daneben Truhe (an der Wand) und Comenius, Lehrertisch weiter links, Mittelalter-Portal rechts neben der Tafel, Start weiter hinten im Mittelgang: Comenius, Truhe und Mittelalter-Portal sind auch im Hochformat im Startblick, nichts steht vor der Tafel. Kollision passend zu Tischen mit Stuehlen, Lehrertisch mit Stuhl und Regal (blender/klassenraum.py: LEHRERTISCH, REIHEN, REGAL)."
+  },
+  "steuerung": {
+    "_hinweis": "lauftempo in m/s; drehtempo = Faktor fuer das Umsehen beim Wischen und mit der Maus (1 = wie bisher, groesser = schneller).",
+    "lauftempo": 3.5,
+    "augenhoehe": 1.4,
+    "drehtempo": 1.35
+  },
+  "epochen": {
+    "_hinweis": "Je Epoche: belichtung = Helligkeit im Freien, belichtungInnen = Helligkeit in der Pyramide (das Auge passt sich an), schwenkSekunden = Dauer des Kameraschwenks bei der Ankunft (0 = aus). Leer lassen = Werte aus der Szene. startNeigung = Neigung des Startblicks nach dem Kameraflug (Grad, negativ = nach unten).",
+    "aegypten": {
+      "belichtung": 0.5,
+      "belichtungInnen": 1.5,
+      "schwenkSekunden": 14,
+      "startNeigung": -12,
+      "_lauftempoAussen": "Lauf E: Gehgeschwindigkeit im Freien (m/s); in den Gaengen und in der Koenigskammer gilt steuerung.lauftempo (3,5), Uebergang fliessend.",
+      "lauftempoAussen": 6.0
+    },
+    "mittelalter": {
+      "belichtung": 0.62,
+      "schwenkSekunden": 11,
+      "fahrtRampen": [
+        0.1,
+        0.22
+      ],
+      "_fahrt": "Lauf D: Kamerafahrt, je Punkt [x, y, z, Blickziel x, y, z, Tempo] in Blender-Koordinaten (x Osten, y Norden, z oben). Der Startblick wird angehaengt. Pruefen: node tools/fahrt_bilder.mjs docs/lauf-d mittelalter",
+      "fahrt": [
+        [
+          27.0,
+          0.4,
+          3.3,
+          12.0,
+          -1.0,
+          2.2
+        ],
+        [
+          22.5,
+          0.7,
+          3.0,
+          6.0,
+          0.5,
+          1.7
+        ],
+        [
+          17.5,
+          0.5,
+          2.75,
+          2.0,
+          0.5,
+          1.5
+        ],
+        [
+          11.5,
+          -2.0,
+          3.1,
+          1.5,
+          0.5,
+          1.3
+        ],
+        [
+          6.0,
+          -3.9,
+          3.0,
+          1.5,
+          1.5,
+          1.3
+        ],
+        [
+          0.0,
+          -4.2,
+          3.0,
+          -0.3,
+          3.8,
+          1.5
+        ],
+        [
+          -5.0,
+          -3.4,
+          2.7,
+          -0.1,
+          2.9,
+          2.0
+        ],
+        [
+          -8.3,
+          -2.9,
+          2.1,
+          0.8,
+          1.2,
+          2.2
+        ]
+      ]
+    },
+    "rom": {
+      "belichtung": 0.55,
+      "schwenkSekunden": 12,
+      "fahrtRampen": [
+        0.1,
+        0.2
+      ],
+      "_fahrt": "Lauf D: aussen vor dem Osteingang, durch den Torbogen und den Gang in die Arena, Bogen ueber die Raenge und die Gladiatoren zum Startblick. Je Punkt [x, y, z, Blickziel x, y, z, Tempo].",
+      "fahrt": [
+        [
+          97.0,
+          9.5,
+          6.0,
+          83.5,
+          0.0,
+          4.2,
+          1.0
+        ],
+        [
+          91.0,
+          3.0,
+          3.4,
+          76.0,
+          0.0,
+          2.6,
+          1.15
+        ],
+        [
+          84.0,
+          0.2,
+          2.3,
+          66.0,
+          0.0,
+          2.2,
+          1.7
+        ],
+        [
+          70.0,
+          0.0,
+          2.1,
+          46.0,
+          0.0,
+          2.1,
+          2.1
+        ],
+        [
+          54.0,
+          0.0,
+          2.1,
+          30.0,
+          0.0,
+          2.2,
+          2.1
+        ],
+        [
+          40.0,
+          0.0,
+          2.1,
+          14.0,
+          -2.0,
+          2.6,
+          1.6
+        ],
+        [
+          27.0,
+          3.5,
+          3.6,
+          -3.0,
+          -6.5,
+          1.8,
+          1.0
+        ],
+        [
+          14.0,
+          7.5,
+          4.3,
+          -3.0,
+          -8.0,
+          2.6,
+          1.0
+        ],
+        [
+          2.0,
+          8.0,
+          3.6,
+          -2.5,
+          -10.0,
+          3.0,
+          1.0
+        ],
+        [
+          -5.5,
+          6.0,
+          2.4,
+          -2.0,
+          -15.0,
+          3.6,
+          1.0
+        ]
+      ]
+    }
+  },
+  "_ersatzStimme": "true: Fehlt zu einer Zeile die Tondatei (ElevenLabs), spricht die eingebaute Stimme des iPads. false: dann nur Untertitel.",
+  "ersatzStimme": true,
+  "messanzeige": false,
+  "renderAufloesung": 0.85,
+  "_passwortAbstand": "Lauf E: Abstand in Metern (waagrecht), ab dem das Passwort beim Hingehen gefunden wird (in allen Welten gleich); antippen geht aus der doppelten Entfernung.",
+  "passwortAbstand": 4.5,
+  "drohne": {
+    "_hinweis": "Hilfsdrohne in den Epochen: heissM = ab dieser Entfernung (m, entlang des Weges) heiss/rot; schritt = so viele Meter naeher/weiter, bevor sie 'waermer'/'kalt' meldet; ton = kurzer Piepton bei jeder Meldung.",
+    "an": true,
+    "heissM": 13,
+    "schritt": 5,
+    "ton": true,
+    "lautstaerke": 0.35
+  }
+}

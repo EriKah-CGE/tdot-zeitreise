@@ -1,0 +1,368 @@
+{
+  "_hinweis": "Alle Texte des Spiels. Jede Zeile mit 'id' hat eine Tondatei public/audio/<id>.mp3 (erzeugt mit tools/ton_erzeugen.mjs). Fehlt die Datei, erscheint nur der Untertitel. Die Stimme richtet sich nach dem Anfang der Kennung (stimmen.praefixe).",
+  "stimmen": {
+    "_hinweis": "ElevenLabs-Stimmen (voice_id) je Sprecher. Welche Zeile welcher Sprecher spricht, steht in 'praefixe' (Anfang der Kennung). Lauf B: deutsche Stimmen aus der ElevenLabs-Bibliothek (die englischen Standardstimmen hatten im Deutschen einen hoerbaren Akzent).",
+    "comenius": "yR6YPi6ytQSGBZ0uKFQl",
+    "baumeister": "43H9TfBpRZiNdzjX9Acg",
+    "erzaehler": "m1xJVQ4AuvhAWXoSQdeA",
+    "drohne": "S87WJpstXs0Ge2ukRiXJ",
+    "marktfrau": "sa2Ndyhs1V7h8EXKT9mV",
+    "wachsoldat": "NncRzVbOpx5d3mnv8Ss4",
+    "praefixe": {
+      "c_": "comenius",
+      "b_": "baumeister",
+      "d_": "drohne",
+      "m_": "marktfrau",
+      "w_": "wachsoldat"
+    },
+    "_namen": "Lauf B (alle deutsch, aus der ElevenLabs-Bibliothek): comenius = Heribert (aelter, warm, ruhig), baumeister = Hans (tief, warm), erzaehler = Anneke (klar, sachlich, Info-Punkte/Ankunft/Fund), drohne = Pauli (jung, hell, freundlich), marktfrau = Mona (warme Altstimme, mittleres Alter), wachsoldat = Vitali (tief, ruhig). Modell eleven_multilingual_v2."
+  },
+  "oberflaeche": {
+    "titel": "Zeitreise durch die Geschichte",
+    "untertitel": "Tag der offenen Tür",
+    "startknopf": "Los geht's!",
+    "laden": "Lade …",
+    "steuerung": [
+      "Linke Hälfte: Finger auflegen und schieben zum Laufen.",
+      "Rechte Hälfte: wischen zum Umsehen.",
+      "Antippen: Personen, Truhe, Portale und leuchtende Punkte."
+    ],
+    "steuerungPC": "Am Computer: W A S D zum Laufen, Maus zum Umsehen, Linksklick zum Antippen. Rechtsklick gibt den Mauszeiger frei.",
+    "hudTitel": "Passwörter",
+    "hudLeer": "?",
+    "weiter": "Weiter",
+    "schliessen": "Schließen",
+    "zurueckPortal": "Zurück zum Klassenraum",
+    "reiseNach": "Reise nach",
+    "reiseZurueck": "Zurück in den Klassenraum",
+    "ueberspringen": "Überspringen",
+    "passwortGefunden": "Passwort gefunden!",
+    "passwortEingetragen": "Es steht jetzt oben in deiner Liste.",
+    "truheTitel": "Die Truhe",
+    "truheText": "Gib die drei Passwörter ein.",
+    "truheOeffnen": "Öffnen",
+    "truheFalsch": "Das stimmt noch nicht. Schau oben in deine Liste!",
+    "truheFehlt": "Dir fehlen noch Passwörter. Reise durch die Portale!",
+    "truheOffenTitel": "Geschafft!",
+    "truheOffenText": "Dieses Wort braucht ihr für die Schnitzeljagd im Schulhaus:",
+    "resetHalten": "2 Sekunden halten",
+    "kontextverlust": "Bitte Seite neu laden",
+    "neuLaden": "Neu laden",
+    "querformat": "Bitte das iPad quer halten.",
+    "soundboardTitel": "Alle Sprachausgaben",
+    "soundboardHinweis": "Jede Zeile antippen zum Abhören. Fehlt die Tondatei (ElevenLabs), spricht die Stimme des Geräts.",
+    "tippen": "Antippen",
+    "hinweisPC": "Rechtsklick: Mauszeiger frei (zum Wegklicken). Linksklick ins Bild: wieder umsehen.",
+    "drohneName": "Hilfsdrohne",
+    "drohneKalt": "kalt",
+    "drohneWaermer": "wärmer",
+    "drohneHeiss": "heiß!",
+    "drohneZurueck": "Zum Tor!",
+    "drohneTippen": "Drohne antippen für einen Tipp",
+    "baumeisterName": "Baumeister Hemiunu",
+    "marktfrauName": "Marktfrau Grete",
+    "wachsoldatName": "Wachsoldat Marcus"
+  },
+  "epochen": {
+    "aegypten": {
+      "name": "Ägypten",
+      "zeit": "um 2560 v. Chr."
+    },
+    "mittelalter": {
+      "name": "Mittelalter",
+      "zeit": "um 1400"
+    },
+    "rom": {
+      "name": "Rom",
+      "zeit": "um 100 n. Chr."
+    }
+  },
+  "comenius": {
+    "begruessung": [
+      {
+        "id": "c_begruessung_1",
+        "text": "Seid gegrüßt, liebe Gäste! Ich bin Johann Amos Comenius. Vor fast 400 Jahren war ich Lehrer und habe eines der ersten Schulbücher mit Bildern für Kinder geschrieben."
+      },
+      {
+        "id": "c_begruessung_2",
+        "text": "Heute habe ich etwas Besonderes für euch: Ihr könnt eine Zeitreise machen! Seht ihr die drei leuchtenden Tore? Sie führen nach Ägypten, ins Mittelalter und ins alte Rom."
+      },
+      {
+        "id": "c_begruessung_3",
+        "text": "Hier steht meine Truhe. Sie öffnet sich nur mit drei Passwörtern. In jeder Zeit ist eines versteckt. Haltet die Augen offen!"
+      },
+      {
+        "id": "c_begruessung_drohne",
+        "text": "Eine kleine Hilfsdrohne begleitet euch: Wird sie gelb oder rot, seid ihr dem Passwort ganz nah."
+      },
+      {
+        "id": "c_begruessung_4",
+        "text": "In der Truhe liegt ein Wort. Das braucht ihr nachher für die Schnitzeljagd hier im Schulhaus. Viel Glück, ihr Zeitreisenden!"
+      }
+    ],
+    "hinweise": {
+      "keins": [
+        {
+          "id": "c_hinweis_keins",
+          "text": "Geht durch eines der drei Tore. Welche Reihenfolge ihr wählt, ist ganz egal. In jeder Zeit wartet ein Passwort auf euch."
+        }
+      ],
+      "eins": [
+        {
+          "id": "c_hinweis_eins",
+          "text": "Sehr gut, ein Passwort habt ihr schon! Zwei fehlen noch. Sucht in den anderen Zeiten weiter."
+        }
+      ],
+      "zwei": [
+        {
+          "id": "c_hinweis_zwei",
+          "text": "Großartig, nur noch ein Passwort! Ein Tor habt ihr noch nicht durchschritten."
+        }
+      ],
+      "alle": [
+        {
+          "id": "c_hinweis_alle",
+          "text": "Ihr habt alle drei Passwörter! Geht zur Truhe und tippt sie an. Dann gebt ihr die Wörter ein."
+        }
+      ],
+      "offen": [
+        {
+          "id": "c_hinweis_offen",
+          "text": "Ihr habt es geschafft! Merkt euch das Wort aus der Truhe gut. Und nun viel Spaß bei der Schnitzeljagd!"
+        }
+      ]
+    },
+    "tipps": {
+      "aegypten": {
+        "id": "c_tipp_aegypten",
+        "text": "Tipp für Ägypten: Das Passwort liegt ganz tief im Inneren der Pyramide, in der Kammer des Königs."
+      },
+      "mittelalter": {
+        "id": "c_tipp_mittelalter",
+        "text": "Tipp für das Mittelalter: Schaut euch die Marktstände genau an. Ein Händler hat eine wichtige Urkunde."
+      },
+      "rom": {
+        "id": "c_tipp_rom",
+        "text": "Tipp für Rom: Geht in der Arena an den Toren entlang. An einem steht eine Inschrift."
+      }
+    }
+  },
+  "infopunkte": {
+    "aegypten_pyramide": {
+      "titel": "Die Cheops-Pyramide",
+      "zeilen": [
+        {
+          "id": "i_aegypten_pyramide_1",
+          "text": "Du stehst am Eingang der größten Pyramide Ägyptens. Sie wurde vor etwa 4500 Jahren für den Pharao Cheops gebaut."
+        },
+        {
+          "id": "i_aegypten_pyramide_2",
+          "text": "Sie ist fast 150 Meter hoch und besteht aus über zwei Millionen Steinblöcken. Außen war sie mit weißem, glattem Kalkstein verkleidet. In der Sonne hat sie geglänzt!"
+        }
+      ]
+    },
+    "aegypten_galerie": {
+      "titel": "Die Große Galerie",
+      "zeilen": [
+        {
+          "id": "i_aegypten_galerie_1",
+          "text": "Das ist die Große Galerie. Sie ist so hoch wie ein dreistöckiges Haus. Die Wände rücken Stufe für Stufe nach innen. So trägt sich die Decke selbst."
+        },
+        {
+          "id": "i_aegypten_galerie_2",
+          "text": "Warum die Galerie so groß ist, weiß bis heute niemand ganz genau. Vielleicht lagerten hier riesige Steine, mit denen der Gang am Ende verschlossen wurde."
+        }
+      ]
+    },
+    "aegypten_kammer": {
+      "titel": "Die Königskammer",
+      "zeilen": [
+        {
+          "id": "i_aegypten_kammer_1",
+          "text": "Die Königskammer ist aus rotem Granit. Die Steine kamen aus Assuan, fast 900 Kilometer entfernt. Sie wurden auf Schiffen über den Nil gebracht."
+        },
+        {
+          "id": "i_aegypten_kammer_2",
+          "text": "In dem großen Steinkasten, dem Sarkophag, sollte der Pharao für immer ruhen. Die Ägypter glaubten an ein Leben nach dem Tod."
+        }
+      ]
+    },
+    "mittelalter_markt": {
+      "titel": "Markttag",
+      "zeilen": [
+        {
+          "id": "i_mittelalter_markt_1",
+          "text": "Heute ist Markttag! Bauern aus den Dörfern verkaufen Gemüse, Eier und Käse. Handwerker bieten Töpfe, Stoffe und Schuhe an."
+        },
+        {
+          "id": "i_mittelalter_markt_2",
+          "text": "Eine Stadt durfte nur einen Markt abhalten, wenn der König oder der Landesherr es erlaubt hatte. Das stand in einer wichtigen Urkunde, dem Marktrecht."
+        }
+      ]
+    },
+    "mittelalter_brunnen": {
+      "titel": "Der Brunnen",
+      "zeilen": [
+        {
+          "id": "i_mittelalter_brunnen_1",
+          "text": "Wasserleitungen in den Häusern gab es nicht. Alle holten ihr Wasser am Brunnen, in Eimern und Krügen. Hier trafen sich die Leute und erzählten sich Neuigkeiten."
+        }
+      ]
+    },
+    "rom_arena": {
+      "titel": "Das Kolosseum",
+      "zeilen": [
+        {
+          "id": "i_rom_arena_1",
+          "text": "Willkommen im Kolosseum in Rom! Hier passten etwa 50.000 Menschen hinein. Der Eintritt war frei, denn die Kaiser wollten beim Volk beliebt sein."
+        },
+        {
+          "id": "i_rom_arena_2",
+          "text": "In der Arena kämpften Gladiatoren. Es gab auch Vorführungen mit wilden Tieren aus Afrika, zum Beispiel Löwen und Elefanten."
+        }
+      ]
+    },
+    "rom_segel": {
+      "titel": "Die Sonnensegel",
+      "zeilen": [
+        {
+          "id": "i_rom_segel_1",
+          "text": "Schau nach oben! Riesige Sonnensegel spendeten den Zuschauern Schatten. Seeleute aus der Flotte spannten sie mit Seilen und Masten auf."
+        }
+      ]
+    },
+    "mittelalter_schmied": {
+      "titel": "Der Schmied",
+      "zeilen": [
+        {
+          "id": "i_mittelalter_schmied_1",
+          "text": "Der Schmied macht aus Eisen Hufeisen, Nägel, Messer und Werkzeug. Er erhitzt das Eisen im Feuer, bis es glüht. Dann schlägt er es auf dem Amboss in Form."
+        }
+      ]
+    },
+    "rom_gladiatoren": {
+      "titel": "Gladiatoren",
+      "zeilen": [
+        {
+          "id": "i_rom_gladiatoren_1",
+          "text": "Gladiatoren waren Kämpfer, die vor Publikum gegeneinander antraten. Sie trainierten in besonderen Schulen. Manche wurden so berühmt wie heute Sportstars."
+        },
+        {
+          "id": "i_rom_gladiatoren_2",
+          "text": "Jeder Gladiator hatte seine eigene Ausrüstung: der eine einen großen Schild und ein kurzes Schwert, der andere einen kleinen Schild und ein gebogenes Schwert. Ein Schiedsrichter achtete auf die Regeln."
+        }
+      ]
+    }
+  },
+  "baumeister": {
+    "_hinweis": "Hemiunu, Baumeister des Pharao Cheops (Aegypten, Werkplatz). Beim ersten Antippen alle Zeilen, danach nur der Hinweis.",
+    "erzaehlen": [
+      {
+        "id": "b_baumeister_1",
+        "text": "Willkommen auf meiner Baustelle! Ich bin Hemiunu, der Baumeister des Pharaos."
+      },
+      {
+        "id": "b_baumeister_2",
+        "text": "Meine Arbeiter behauen die Steine mit Meißeln aus Kupfer. Die schweren Blöcke ziehen sie auf Holzschlitten. Vor die Kufen gießt einer Wasser, dann rutscht der Schlitten leichter über den Sand."
+      },
+      {
+        "id": "b_baumeister_3",
+        "text": "Viele tausend Menschen haben mehr als zwanzig Jahre lang an dieser Pyramide gebaut. Sie ist das Grab für unseren König, den Pharao Cheops."
+      }
+    ],
+    "hinweis": {
+      "id": "b_baumeister_hinweis",
+      "text": "Du suchst ein Passwort? Geh in die Pyramide hinein, ganz hinauf bis in die Königskammer. Dort findest du es."
+    }
+  },
+  "marktfrau": {
+    "_hinweis": "Marktfrau Grete am Stand mit der Urkunde (Mittelalter). Beim ersten Antippen alle Zeilen, danach nur der Hinweis.",
+    "erzaehlen": [
+      {
+        "id": "m_marktfrau_1",
+        "text": "Grüß Gott! Ich bin Grete. Heute ist Markttag, da kommen die Bauern vom Land in die Stadt und verkaufen Eier, Gemüse und Käse."
+      },
+      {
+        "id": "m_marktfrau_2",
+        "text": "In unserer Stadt leben viele Handwerker: Bäcker, Töpfer, Weber und der Schmied dort drüben. Jedes Handwerk hat seine Zunft mit strengen Regeln."
+      },
+      {
+        "id": "m_marktfrau_3",
+        "text": "Wer in der Stadt wohnt, ist frei und muss keinem Grundherrn dienen. Unsere Rechte stehen im Stadtrecht, und das Recht, Markt zu halten, steht in einer wichtigen Urkunde."
+      }
+    ],
+    "hinweis": {
+      "id": "m_marktfrau_hinweis",
+      "text": "Du suchst ein Passwort? Die Urkunde hängt hier an unserem Stand, gleich hinter dem Tisch. Schau sie dir genau an!"
+    }
+  },
+  "wachsoldat": {
+    "_hinweis": "Wachsoldat Marcus am Osttor mit der Inschrift (Rom). Beim ersten Antippen alle Zeilen, danach nur der Hinweis.",
+    "erzaehlen": [
+      {
+        "id": "w_wache_1",
+        "text": "Salve, Fremder! Ich bin Marcus und bewache dieses Tor. Ins Kolosseum passen etwa fünfzigtausend Menschen."
+      },
+      {
+        "id": "w_wache_2",
+        "text": "Der Kaiser lädt das Volk zu den Spielen ein, der Eintritt ist frei. So bleibt er bei den Römern beliebt. Dort drüben in der Loge mit dem roten Dach sitzt er."
+      }
+    ],
+    "hinweis": {
+      "id": "w_wache_hinweis",
+      "text": "Du suchst ein Passwort? Schau hinauf über dieses Tor. Dort ist ein Wort in den Stein gemeißelt. Es hat mit dem Mann in der Loge zu tun."
+    }
+  },
+  "drohne": {
+    "_hinweis": "Tipps der Hilfsdrohne beim Antippen (je Epoche, vor dem Fund) und nach dem Fund.",
+    "tipps": {
+      "aegypten": {
+        "id": "d_tipp_aegypten",
+        "text": "Das Passwort ist tief in der Pyramide. Geh über die Terrasse zum Eingang und dann immer weiter hinein und hinauf."
+      },
+      "mittelalter": {
+        "id": "d_tipp_mittelalter",
+        "text": "Schau dir die Marktstände genau an. Beim Schreiber hängt eine wichtige Urkunde."
+      },
+      "rom": {
+        "id": "d_tipp_rom",
+        "text": "Geh in der Arena zu den großen Toren. Über einem Tor ist eine Inschrift in den Stein gemeißelt."
+      }
+    },
+    "gefunden": {
+      "id": "d_gefunden",
+      "text": "Super, du hast das Passwort! Das Tor zurück in den Klassenraum ist ganz in der Nähe. Mein Pfeil zeigt dir den Weg."
+    }
+  },
+  "passwortfunde": {
+    "aegypten": {
+      "id": "p_aegypten",
+      "titel": "Eine Inschrift leuchtet auf!",
+      "text": "Die alten Zeichen verwandeln sich in Buchstaben. Das Passwort lautet: {passwort}."
+    },
+    "mittelalter": {
+      "id": "p_mittelalter",
+      "titel": "Die Urkunde des Marktrechts",
+      "text": "Auf der Urkunde steht groß ein Wort. Das Passwort lautet: {passwort}."
+    },
+    "rom": {
+      "id": "p_rom",
+      "titel": "Eine Inschrift am Tor",
+      "text": "In den Stein ist ein Wort gemeißelt. Das Passwort lautet: {passwort}. Der Kaiser sah den Spielen von seiner Loge mit dem roten Dach aus zu."
+    }
+  },
+  "ankunft": {
+    "aegypten": {
+      "id": "a_aegypten",
+      "text": "Ägypten, um 2560 vor Christus. Die Pyramide des Pharao Cheops ist gerade fertig geworden. Unten am Werkplatz arbeiten die Steinmetze noch an den Tempeln und Gräbern."
+    },
+    "mittelalter": {
+      "id": "a_mittelalter",
+      "text": "Eine Stadt im Mittelalter, um 1400. Heute ist Markttag: Die Händler haben ihre Stände schon aufgebaut."
+    },
+    "rom": {
+      "id": "a_rom",
+      "text": "Rom, um 100 nach Christus. Du stehst in der Arena des Kolosseums. Gleich beginnen die Spiele, die Ränge sind schon voll!"
+    }
+  }
+}
